@@ -28,10 +28,12 @@ bash <(curl -s https://raw.githubusercontent.com/AirysDark/appimage-manager/main
 
 2. Manual Install
 
-git clone '''https://github.com/AirysDark/appimage-manager.git
+git clone '''
+https://github.com/AirysDark/appimage-manager.git
 cd appimage-manager
 chmod +x appimage_manager.sh
-./appimage_manager.sh'''
+./appimage_manager.sh
+'''
 
 
 ---
