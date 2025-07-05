@@ -13,5 +13,7 @@ A lightweight GUI-based AppImage installer/uninstaller for Linux using \`zenity\
 ## Install
 bash
 ```
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/AirysDark/appimage-manager/main/appimage_manager.sh)" -- save
+curl -L https://raw.githubusercontent.com/AirysDark/appimage-manager/main/appimage_manager.sh -o appimage_manager.sh
+chmod +x appimage_manager.sh
+./appimage_manager.sh
 ```
