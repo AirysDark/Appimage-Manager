@@ -1,0 +1,29 @@
+name: Release AppImage Manager
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Dependencies
+        run: sudo apt update && sudo apt install -y dpkg-dev
+
+      - name: Build .deb Package
+        run: |
+          chmod +x appimage_manager.sh
+          chmod +x appimage-manager-deb
+          ./appimage-manager-deb
+
+      - name: Upload .deb to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: appimage-manager_1.0.0.deb
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
