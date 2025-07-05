@@ -1,24 +1,29 @@
-name: Create Release Tarball
+name: Release AppImage Manager
 
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 jobs:
-  build:
+  build-and-release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Create archive
-        run: |
-          tar -czvf appimage-manager.tar.gz appimage_manager.sh README.md LICENSE
+      - name: Set up Dependencies
+        run: sudo apt update && sudo apt install -y dpkg-dev
 
-      - name: Upload Release
+      - name: Build .deb Package
+        run: |
+          chmod +x appimage_manager.sh
+          chmod +x appimage-manager-deb
+          ./appimage-manager-deb
+
+      - name: Upload .deb to Release
         uses: softprops/action-gh-release@v1
         with:
-          files: appimage-manager.tar.gz
+          files: appimage-manager_1.0.0.deb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
