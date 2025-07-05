@@ -1,1 +1,24 @@
+name: Create Release Tarball
 
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Create archive
+        run: |
+          tar -czvf appimage-manager.tar.gz appimage_manager.sh README.md LICENSE
+
+      - name: Upload Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: appimage-manager.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
