@@ -23,18 +23,19 @@ Features
 Installation
 
 1. One-Line Installer
-
+```
 bash <(curl -s https://raw.githubusercontent.com/AirysDark/appimage-manager/main/appimage_manager.sh)
+```
 
 2. Manual Install
 
-git clone '''
+git clone
+```
 https://github.com/AirysDark/appimage-manager.git
 cd appimage-manager
 chmod +x appimage_manager.sh
 ./appimage_manager.sh
-'''
-
+```
 
 ---
 
